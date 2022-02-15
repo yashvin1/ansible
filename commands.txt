@@ -1,0 +1,9 @@
+ssh remote_user@172.17.0.2
+
+ssh remote_user@172.17.0.3
+
+/home/yash/ansible
+
+source myansible/bin/activate
+
+virtualenv -p /usr/bin/python3 myansible
