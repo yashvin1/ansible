@@ -7,3 +7,5 @@ ssh remote_user@172.17.0.3
 source myansible/bin/activate
 
 virtualenv -p /usr/bin/python3 myansible
+
+ansible-playbook ansible_scripts/ansible/my_ansible.yml
