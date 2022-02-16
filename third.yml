@@ -1,0 +1,20 @@
+#!/home/yash/ansible/myansible/bin/ansible-playbook
+- name: practising ansible with variable
+  hosts: centos
+  gather_facts: false
+  remote_user: remote_user
+  become: 'yes'
+  become_user: root
+
+  tasks:
+    - name: Create and Add items to dictionary
+      set_fact:
+          userdata: "{{ userdata | default({}) | combine ({ item.key : item.value }) }}"
+      with_items:
+        - { 'key': 'Name' , 'value': 'SaravAK'}
+        - { 'key': 'Email' , 'value': 'sarav@gritfy.com'}
+        - { 'key': 'Location' , 'value': 'Coimbatore'}
+        - { 'key': 'Nationality' , 'value': 'Indian'}
+
+    - name: Display the Dictionary
+      debug: var=userdata

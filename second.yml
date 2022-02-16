@@ -1,0 +1,20 @@
+#!/home/yash/ansible/myansible/bin/ansible-playbook
+- name: practising ansible with variable
+  hosts: centos
+  gather_facts: false
+  remote_user: remote_user
+  become: 'yes'
+  become_user: root
+
+  vars:
+      packages: [ 'gettext-devel', 'openssl-devel', 'perl-CPAN', 'perl-devel', 'zlib-devel', 'unzip', 'curl', 'wget' ]
+      numbers:  [ 1, 2, 3, 4 ]
+
+  tasks:
+    - name: PRINTING ALL THE VARIABLES
+      debug:
+        msg:
+          - This is the values in packages {{ item.0 }} and in numbers {{ item.1 }}
+      with_together:
+        - "{{ packages }}"
+        - "{{ numbers }}"
