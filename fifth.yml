@@ -1,12 +1,18 @@
 #!/home/yash/ansible/myansible/bin/ansible-playbook
-- name: playing with ansible
+- name: practising ansible with variable
   hosts: centos
-  gather_facts: true
+  gather_facts: false
   remote_user: remote_user
   become: 'yes'
   become_user: root
 
   tasks:
-    - name: creating files
-       
+    - name: Installing sudo 
+      ansible.builtin.command: yum install vim -y
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: /etc/some_directory
+        state: directory
+        mode: '0755'
 
