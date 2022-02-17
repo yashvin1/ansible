@@ -1,0 +1,15 @@
+- name: demo the template
+  hosts: localhost
+  gather_facts: false
+
+  vars: 
+    api:
+      v2: true
+
+  tasks:
+    - name: pause with render
+      ansible.builtin.debug:
+        msg: "API = cinder{{ 'v2' if api.v2 else '' }}"
+
+#ansible-playbook -i mastery-hosts template-demo-v2.yaml -e
+#'{api: {"v2": false}}'

@@ -1,0 +1,39 @@
+# data dirs
+{% for dir in data_dirs -%}
+{% if dir != "/" -%}
+data_dir = {{ dir }}
+{% endif -%}
+{% else -%}
+# no data dirs found
+{% endfor -%}
+
+# above can be written as below it will taken less lines 
+
+# data dirs
+{% for dir in data_dirs if dir != "/" -%}
+data_dir = {{ dir }}
+{% else -%}
+# no data dirs found
+{% endfor -%}
+
+
+# data dirs
+{% for dir in data_dirs if dir != "/" -%}
+{% if loop.first -%}
+data_dir = {{ dir }},
+{% else -%}
+{{ dir }},
+{% endif -%}
+{% else -%}
+# no data dirs found
+{% endfor -%}
+
+
+Variable ------------------Description 
+loop . index  ------------The current iteration of the loop (1 indexed) 
+loop . index0 ----------The current iteration of the loop (0 indexed) 
+loop . rev index -------The number of iterations until the end of the loop (1 indexed) 
+loop . revindex0 ------The number of iterations until the end of the loop (0 indexed) 
+loop . first --------------Boolean True if it is the first iteration 
+loop . last ---------------Boolean True if it is the last iteration 
+loop . length -----------The number of items in the sequence
