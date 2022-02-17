@@ -1,0 +1,18 @@
+---
+- name: demo the template
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    setting: a_val
+    feature:
+      enabled: false
+    another_setting: b_val
+
+  tasks:
+    - name: pause with render
+      ansible.builtin.pause:
+        prompt: "{{ lookup('template', 'demo.j2') }}"
+
+#ansible-playbook -i mastery-hosts template-demo.yaml -e 
+#'{feature: {"enabled": false}}'
