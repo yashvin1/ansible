@@ -1,6 +1,6 @@
 #!/home/yash/ansible/myansible/bin/ansible-playbook
 - name: practising ansible with variable
-  hosts: centos
+  hosts: all
   gather_facts: false
   remote_user: remote_user
   become: 'yes'

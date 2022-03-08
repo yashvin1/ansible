@@ -6,9 +6,9 @@
   - name: show assigned group variables
     vars:
       msg: |
-          http_port:{{ hostvars[inventory_hostname]['http_port'] }}
-          thread_count:{{ hostvars[inventory_hostname]['thread_count'] | default("undefined") }} 
-          secure:{{ hostvars[inventory_hostname]['secure']}}
+          http_port:{{ hostvars[inventory_hostname]['http_port'] | default("undefined")}}
+          proxy_timeout:{{ hostvars[inventory_hostname]['proxy_timeout'] | default("undefined") }} 
+          ansible_port:{{ hostvars[inventory_hostname]['ansible_port'] | default("undefined")}}
     
     ansible.builtin.debug:
       msg: "{{ msg.split('\n') }}"
